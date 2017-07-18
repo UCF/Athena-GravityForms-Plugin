@@ -1,6 +1,6 @@
 # Athena Gravity Forms #
 
-Provides Athena Framework styling for Gravity Forms.
+WordPress plugin that provides Athena Framework styling for Gravity Forms.
 
 
 ## Description ##

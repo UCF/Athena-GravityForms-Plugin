@@ -7,7 +7,7 @@ Stable tag: 1.0.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/copyleft/gpl-3.0.html
 
-Provides Athena Framework styling for Gravity Forms.
+WordPress plugin that provides Athena Framework styling for Gravity Forms.
 
 
 == Description ==
