@@ -22,7 +22,7 @@ This plugin provides plug-and-go styling for [Gravity Forms](http://www.gravityf
 2. Activate the plugin through the "Plugins" screen in WordPress
 
 = WP CLI Installation =
-1. `$ wp plugin install --activate https://github.com/UCF/UCF-Alert-Plugin/archive/master.zip`.  See [WP-CLI Docs](http://wp-cli.org/commands/plugin/install/) for more command options.
+1. `$ wp plugin install --activate https://github.com/UCF/Athena-GravityForms-Plugin/archive/master.zip`.  See [WP-CLI Docs](http://wp-cli.org/commands/plugin/install/) for more command options.
 
 
 == Changelog ==
