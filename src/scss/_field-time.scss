@@ -1,0 +1,34 @@
+// scss-lint:disable SelectorFormat PlaceholderInExtend QualifyingElement ImportantRule
+
+// Hour/minute text fields and am/pm dropdown
+.gfield_time_hour,
+.gfield_time_minute {
+  @extend .col;
+  @extend .col-sm-3;
+  @extend .col-lg-2;
+}
+
+.gfield_time_ampm {
+  @extend .col;
+  @extend .col-sm-3;
+  @extend .col-md-2;
+}
+
+// Hour field
+.gfield_time_hour {
+  // Remove colon between hour and minute fields, since its position in the DOM
+  // makes it difficult to position properly:
+  > i {
+    display: none;
+  }
+}
+
+// .gfield modifier for sublabels above inputs (text inputs only)
+.field_sublabel_above {
+  .gfield_time_hour,
+  .gfield_time_minute,
+  .gfield_time_ampm {
+    align-self: flex-end;
+    flex-direction: column;
+  }
+}

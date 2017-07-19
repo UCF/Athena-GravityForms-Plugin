@@ -1,8 +1,14 @@
 // scss-lint:disable SelectorFormat PlaceholderInExtend QualifyingElement
 
-// Wrapper for form title+subtitle
-.gform_heading {
+// Wrapper for form body (wraps around .gform_fields)
+.gform_body {
   margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+// Wrapper for form submit button, prev/next buttons
+.gform_footer {
+  margin-top: 1.75rem;
 }
 
 // Unordered list of gfield's
@@ -20,7 +26,7 @@
 
 // Field groups with sublabels
 .ginput_container_name,
-.ginput_container_date > .clear-multi {
+.clear-multi {
   @include make-row();
 
   // Sublabels
