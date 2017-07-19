@@ -43,7 +43,7 @@ gulp.task('css-main', function() {
     .pipe(tap(function(file) {
       return purifyCSS('', file.contents.toString(), {
         info: true,
-        whitelist: ['*gform*']
+        whitelist: ['*gform*', '*ui-datepicker*']
       }, function(output){
         file.contents = new Buffer(output);
       });

@@ -1,0 +1,117 @@
+// scss-lint:disable SelectorFormat PlaceholderInExtend QualifyingElement NestingDepth
+
+.ui-datepicker {
+  @extend .popover;
+
+  &::before,
+  &::after {
+    // We can't control whether the datepicker is top- or bottom-aligned, so
+    // make sure the caret from the .popover class is removed
+    display: none;
+  }
+
+  // Header with prev/next, m/y dropdowns
+  .ui-datepicker-header {
+    @extend .popover-title;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  // Prev/next links
+  .ui-datepicker-prev,
+  .ui-datepicker-next {
+    align-self: center;
+  }
+
+  .ui-datepicker-prev {
+    order: -1;
+  }
+
+  .ui-datepicker-next {
+    order: 1;
+  }
+
+  // Base class for prev/next link icons
+  .ui-icon {
+    display: inline-block;
+    height: 1rem;
+    overflow: hidden;
+    text-indent: 2rem;
+    vertical-align: middle;
+    width: 1rem;
+
+    &:hover,
+    &:active {
+      cursor: pointer;
+    }
+  }
+
+  // Prev/next link icons
+  .ui-icon-circle-triangle-e {
+    &::before {
+      border-bottom-width: .5rem;
+      border-color: transparent;
+      border-left-color: $gray;
+      border-left-width: .75rem;
+      border-right-width: 0;
+      border-style: solid;
+      border-top-width: .5rem;
+      content: '';
+      display: block;
+      height: 0;
+      width: 0;
+    }
+  }
+
+  .ui-icon-circle-triangle-w {
+    &::before {
+      border-bottom-width: .5rem;
+      border-color: transparent;
+      border-left-width: 0;
+      border-right-color: $gray;
+      border-right-width: .75rem;
+      border-style: solid;
+      border-top-width: .5rem;
+      content: '';
+      display: block;
+      height: 0;
+      width: 0;
+    }
+  }
+
+  // Wrapper for m/y select fields
+  .ui-datepicker-title {
+    display: flex;
+    flex-direction: row;
+    padding-left: .75rem;
+    padding-right: .75rem;
+  }
+
+  // m/y select fields
+  .ui-datepicker-month,
+  .ui-datepicker-year {
+    @extend .form-control;
+    @extend .form-control-sm;
+    margin-left: .25rem;
+    margin-right: .25rem;
+  }
+
+  // Calendar table
+  .ui-datepicker-calendar {
+    margin: $popover-content-padding-y auto;
+
+    th,
+    td {
+      padding: $popover-content-padding-x / 2;
+      text-align: center;
+
+      &:first-child {
+        padding-left: $popover-content-padding-x;
+      }
+
+      &:last-child {
+        padding-right: $popover-content-padding-x;
+      }
+    }
+  }
+}

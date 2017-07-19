@@ -7,7 +7,7 @@
 
 // Plugin styles
 
-// We wrap *everything* in .gform_wrapper to:
+// We wrap almost everything in .gform_wrapper to:
 // a) Avoid overrides to Athena or other theme styles, and
 // b) help PurifyCSS retain our styles while allowing unneeded Athena styles
 //    to be stripped away
@@ -25,4 +25,8 @@
   @import 'progress-steps';
 
   @import 'field-name';
+  @import 'field-date';
 }
+
+// Other GF-related things that are generated outside of the .gform_wrapper:
+@import 'datepicker';

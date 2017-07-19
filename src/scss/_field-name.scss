@@ -1,19 +1,5 @@
 // scss-lint:disable SelectorFormat PlaceholderInExtend QualifyingElement
 
-// Name fields container
-.ginput_container_name {
-  @include make-row();
-
-  // Sublabels
-  label {
-    color: $brand-default-aw;
-    font-size: $font-size-xs;
-    letter-spacing: $letter-spacing-base;
-    margin-top: .5rem;
-    text-transform: uppercase;
-  }
-}
-
 .name_first,
 .name_middle,
 .name_last {
@@ -23,10 +9,10 @@
 
 .name_prefix,
 .name_suffix {
-  @extend .col-auto;
+  @extend .col;
+  @extend .col-sm-6;
+  @extend .col-md-4;
   @extend .col-lg-2;
-  padding-left: $grid-gutter-width-base / 2;
-  padding-right: $grid-gutter-width-base / 2;
 }
 
 // .gfield modifier for sublabels above inputs
@@ -37,7 +23,7 @@
   .name_prefix,
   .name_suffix {
     @include media-breakpoint-up(lg) {
-      align-self: end;
+      align-self: flex-end;
       flex-direction: column;
     }
   }
