@@ -19,7 +19,7 @@
 // Field description text
 .gfield_description {
   @extend .form-text;
-  @extend .text-muted;
+  color: $text-muted;
   margin-bottom: .5rem; // more than what Athena provides out of the box, but looks better
   margin-top: .5rem;
 }

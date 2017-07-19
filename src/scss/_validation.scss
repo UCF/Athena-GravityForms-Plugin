@@ -1,0 +1,25 @@
+// scss-lint:disable SelectorFormat PlaceholderInExtend QualifyingElement
+
+// Required field asterisk
+.gfield_required {
+  display: none;
+}
+
+// .gfield with validation errors on submit
+.gfield_error {
+  @extend .has-danger;
+
+  .gfield_label {
+    @extend .form-control-label;
+  }
+
+  .validation_message {
+    @extend .form-control-feedback;
+  }
+
+  input:not([type="button"]):not([type="submit"]):not([type="radio"]):not([type="checkbox"]):not([type="file"]),
+  select,
+  textarea {
+    @extend .form-control-danger;
+  }
+}

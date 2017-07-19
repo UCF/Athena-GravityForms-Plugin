@@ -346,7 +346,19 @@ body {
   vertical-align: middle;
 }
 
-.has-success .gform_wrapper *[class^="gchoice"],.gform_wrapper
+.gform_wrapper .gfield_error .validation_message {
+  margin-top: 0.25rem;
+}
+
+.gform_wrapper .gfield_error input:not([type="button"]):not([type="submit"]):not([type="radio"]):not([type="checkbox"]):not([type="file"]),.gform_wrapper .gfield_error select,.gform_wrapper .gfield_error textarea {
+  padding-right: 2.25rem;
+  background-repeat: no-repeat;
+  background-position: center right 0.65625rem;
+  background-size: 1.3125rem 1.3125rem;
+}
+
+.has-success .gform_wrapper .gfield_error .validation_message,.gform_wrapper .gfield_error .has-success .validation_message,.has-success .gform_wrapper .gfield_error .gfield_label,.gform_wrapper .gfield_error
+.has-success .gfield_label,.has-success .gform_wrapper *[class^="gchoice"],.gform_wrapper
 .has-success *[class^="gchoice"] {
   color: #2ecc71;
 }
@@ -358,7 +370,8 @@ body {
   border-color: #2ecc71;
 }
 
-.has-warning .gform_wrapper *[class^="gchoice"],.gform_wrapper
+.has-warning .gform_wrapper .gfield_error .validation_message,.gform_wrapper .gfield_error .has-warning .validation_message,.has-warning .gform_wrapper .gfield_error .gfield_label,.gform_wrapper .gfield_error
+.has-warning .gfield_label,.has-warning .gform_wrapper *[class^="gchoice"],.gform_wrapper
 .has-warning *[class^="gchoice"] {
   color: #f4b350;
 }
@@ -370,16 +383,27 @@ body {
   border-color: #f4b350;
 }
 
-.has-danger .gform_wrapper *[class^="gchoice"],.gform_wrapper
-.has-danger *[class^="gchoice"] {
+.gform_wrapper .gfield_error .form-control-feedback,.gform_wrapper .gfield_error .validation_message,.gform_wrapper .gfield_error .form-control-label,.gform_wrapper .gfield_error .gfield_label,.gform_wrapper .gfield_error .col-form-label,.gform_wrapper .gfield_error .form-check-label,.has-danger .gform_wrapper *[class^="gchoice"],.gform_wrapper
+.has-danger *[class^="gchoice"],.gform_wrapper .gfield_error *[class^="gchoice"],.gform_wrapper .gfield_error .custom-control {
   color: #ff6445;
 }
 
-.has-danger .gform_wrapper input:not([type="button"]):not([type="submit"]):not([type="radio"]):not([type="checkbox"]):not([type="file"]),.gform_wrapper .has-danger input:not([type="button"]):not([type="submit"]):not([type="radio"]):not([type="checkbox"]):not([type="file"]),.has-danger
-.gform_wrapper select,.gform_wrapper .has-danger select,.has-danger
-.gform_wrapper textarea,.gform_wrapper .has-danger textarea,.has-danger .ui-datepicker .ui-datepicker-month,.ui-datepicker .has-danger .ui-datepicker-month,.has-danger
-.ui-datepicker .ui-datepicker-year,.ui-datepicker .has-danger .ui-datepicker-year {
+.gform_wrapper .gfield_error .form-control,.has-danger .gform_wrapper input:not([type="button"]):not([type="submit"]):not([type="radio"]):not([type="checkbox"]):not([type="file"]),.gform_wrapper .has-danger input:not([type="button"]):not([type="submit"]):not([type="radio"]):not([type="checkbox"]):not([type="file"]),.gform_wrapper .gfield_error input:not([type="button"]):not([type="submit"]):not([type="radio"]):not([type="checkbox"]):not([type="file"]),.has-danger
+.gform_wrapper select,.gform_wrapper .has-danger select,.gform_wrapper .gfield_error select,.has-danger
+.gform_wrapper textarea,.gform_wrapper .has-danger textarea,.gform_wrapper .gfield_error textarea,.has-danger .ui-datepicker .ui-datepicker-month,.ui-datepicker .has-danger .ui-datepicker-month,.gform_wrapper .gfield_error .ui-datepicker .ui-datepicker-month,.ui-datepicker .gform_wrapper .gfield_error .ui-datepicker-month,.has-danger
+.ui-datepicker .ui-datepicker-year,.ui-datepicker .has-danger .ui-datepicker-year,.gform_wrapper .gfield_error
+.ui-datepicker .ui-datepicker-year,.ui-datepicker .gform_wrapper .gfield_error .ui-datepicker-year {
   border-color: #ff6445;
+}
+
+.gform_wrapper .gfield_error .input-group-addon {
+  color: #ff6445;
+  border-color: #ff6445;
+  background-color: white;
+}
+
+.gform_wrapper .gfield_error .form-control-danger,.gform_wrapper .gfield_error input:not([type="button"]):not([type="submit"]):not([type="radio"]):not([type="checkbox"]):not([type="file"]),.gform_wrapper .gfield_error select,.gform_wrapper .gfield_error textarea {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ff6445' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23d9534f' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E");
 }
 
 .form-inline .gform_wrapper .gfield_radio,.gform_wrapper .form-inline .gfield_radio,.form-inline
@@ -409,6 +433,11 @@ body {
     vertical-align: middle;
   }
 
+  .form-inline .gform_wrapper .gfield_error .gfield_label,  .gform_wrapper .gfield_error .form-inline .gfield_label {
+    margin-bottom: 0;
+    vertical-align: middle;
+  }
+
   .form-inline .gform_wrapper .gfield_radio,  .gform_wrapper .form-inline .gfield_radio,  .form-inline
     .gform_wrapper .gfield_checkbox,  .gform_wrapper .form-inline .gfield_checkbox {
     display: -ms-flexbox;
@@ -432,6 +461,10 @@ body {
     margin-top: 0;
     margin-right: 0.5rem;
     margin-left: 0;
+  }
+
+  .form-inline .has-feedback .gform_wrapper .gfield_error .validation_message,  .gform_wrapper .gfield_error .form-inline .has-feedback .validation_message {
+    top: 0;
   }
 }
 
@@ -1021,14 +1054,6 @@ fieldset[disabled] a.button {
   background-color: #ff3a12 !important;
 }
 
-.gform_wrapper .gfield_description {
-  color: #636c72 !important;
-}
-
-.gform_wrapper a.gfield_description:focus,.gform_wrapper a.gfield_description:hover {
-  color: #4b5257 !important;
-}
-
 @font-face {
   font-family: "UCF Sans Serif Alt";
   src: url("../fonts//ucf-sans-serif-alt/ucfsansserifalt-light-webfont.woff2") format("woff2"), url("../fonts//ucf-sans-serif-alt/ucfsansserifalt-light-webfont.woff") format("woff");
@@ -1216,18 +1241,24 @@ body {
   padding-top: 0.25rem;
 }
 
-.has-success .gform_wrapper *[class^="gchoice"],.gform_wrapper
+.has-success .gform_wrapper .gfield_error .validation_message,.gform_wrapper .gfield_error .has-success .validation_message,.has-success .gform_wrapper .gfield_error .gfield_label,.gform_wrapper .gfield_error
+.has-success .gfield_label,.has-success .gform_wrapper *[class^="gchoice"],.gform_wrapper
 .has-success *[class^="gchoice"] {
   color: #477e5e;
 }
 
-.has-warning .gform_wrapper *[class^="gchoice"],.gform_wrapper
+.has-warning .gform_wrapper .gfield_error .validation_message,.gform_wrapper .gfield_error .has-warning .validation_message,.has-warning .gform_wrapper .gfield_error .gfield_label,.gform_wrapper .gfield_error
+.has-warning .gfield_label,.has-warning .gform_wrapper *[class^="gchoice"],.gform_wrapper
 .has-warning *[class^="gchoice"] {
   color: #966e31;
 }
 
-.has-danger .gform_wrapper *[class^="gchoice"],.gform_wrapper
-.has-danger *[class^="gchoice"] {
+.gform_wrapper .gfield_error .form-control-feedback,.gform_wrapper .gfield_error .validation_message,.gform_wrapper .gfield_error .form-control-label,.gform_wrapper .gfield_error .gfield_label,.gform_wrapper .gfield_error .col-form-label,.gform_wrapper .gfield_error .form-check-label,.has-danger .gform_wrapper *[class^="gchoice"],.gform_wrapper
+.has-danger *[class^="gchoice"],.gform_wrapper .gfield_error *[class^="gchoice"],.gform_wrapper .gfield_error .custom-control {
+  color: #c44f38;
+}
+
+.gform_wrapper .gfield_error .input-group-addon {
   color: #c44f38;
 }
 
@@ -1512,6 +1543,7 @@ body {
 }
 
 .gform_wrapper .gfield_description {
+  color: #636c72;
   margin-bottom: .5rem;
   margin-top: .5rem;
 }
@@ -1602,6 +1634,10 @@ body {
 
 .gform_wrapper *[class^="gchoice"] label {
   cursor: inherit;
+}
+
+.gform_wrapper .gfield_required {
+  display: none;
 }
 
 .gform_wrapper .gf_progressbar {
