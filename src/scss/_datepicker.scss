@@ -92,8 +92,10 @@
   .ui-datepicker-year {
     @extend .form-control;
     @extend .form-control-sm;
+    font-size: 1rem;
     margin-left: .25rem;
     margin-right: .25rem;
+    white-space: nowrap;
   }
 
   // Calendar table

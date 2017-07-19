@@ -1846,8 +1846,10 @@ body {
 }
 
 .ui-datepicker .ui-datepicker-month,.ui-datepicker .ui-datepicker-year {
+  font-size: 1rem;
   margin-left: .25rem;
   margin-right: .25rem;
+  white-space: nowrap;
 }
 
 .ui-datepicker .ui-datepicker-calendar {
