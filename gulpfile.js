@@ -7,6 +7,8 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     cleanCSS = require('gulp-clean-css'),
     readme = require('gulp-readme-to-markdown'),
+    purifyCSS = require('purify-css'),
+    tap = require('gulp-tap'),
     browserSync = require('browser-sync').create();
 
 var configDefault = {
@@ -15,7 +17,8 @@ var configDefault = {
     },
     dist: {
       cssPath: './static/css'
-    }
+    },
+    packagesPath: './node_modules'
   },
   config = merge(configDefault, configLocal);
 
@@ -33,8 +36,27 @@ gulp.task('scss-lint', function() {
 // Compile + bless primary scss files
 gulp.task('css-main', function() {
   return gulp.src(config.src.scssPath + '/athena-gf.scss')
-    .pipe(sass().on('error', sass.logError))
-    .pipe(cleanCSS())
+    .pipe(sass({
+      includePaths: [config.src.scssPath, config.packagesPath]
+    })
+      .on('error', sass.logError))
+    .pipe(tap(function(file) {
+      return purifyCSS('', file.contents.toString(), {
+        info: true,
+        whitelist: ['*gform*']
+      }, function(output){
+        file.contents = new Buffer(output);
+      });
+    }))
+    // TODO: re-enable cleanCSS
+    // TODO: try to filter out html, body selectors from Athena
+    // .pipe(cleanCSS({
+    //   level: {
+    //     1: {
+    //       specialComments: ''
+    //     }
+    //   }
+    // }))
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
       cascade: false

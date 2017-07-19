@@ -1,1 +1,28 @@
-// TODO
+// Plugin variables
+@import 'variables';
+
+// Athena assets
+@import './ucf-athena-framework/src/scss/framework';
+
+
+// Plugin styles
+
+// We wrap *everything* in .gform_wrapper to:
+// a) Avoid overrides to Athena or other theme styles, and
+// b) help PurifyCSS retain our styles while allowing unneeded Athena styles
+//    to be stripped away
+
+// scss-lint:disable SelectorFormat
+.gform_wrapper {
+  @import 'form';
+
+  @import 'input-text';
+  @import 'input-radio-checkbox';
+  @import 'input-file';
+  @import 'button';
+
+  @import 'progress-bar';
+  @import 'progress-steps';
+
+  @import 'field-name';
+}

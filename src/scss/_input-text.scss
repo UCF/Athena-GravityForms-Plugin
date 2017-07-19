@@ -1,0 +1,12 @@
+// scss-lint:disable SelectorFormat PlaceholderInExtend QualifyingElement
+
+input:not([type="button"]):not([type="submit"]):not([type="radio"]):not([type="checkbox"]):not([type="file"]),
+select,
+textarea {
+  @extend .form-control;
+}
+
+// Wrapper for generic input label + input
+.gfield {
+  @extend .form-group;
+}
