@@ -1,11 +1,10 @@
-// Plugin variables
-@import 'variables';
-
 // Athena assets
 @import './ucf-athena-framework/src/scss/framework';
 
 
 // Plugin styles
+
+@import 'mixins';
 
 // We wrap almost everything in .gform_wrapper to:
 // a) Avoid overrides to Athena or other theme styles, and
@@ -21,13 +20,14 @@
   @import 'input-file';
   @import 'button';
   @import 'validation';
-
   @import 'progress-bar';
   @import 'progress-steps';
 
+  @import 'field-advanced';
   @import 'field-name';
   @import 'field-date';
   @import 'field-time';
+  @import 'field-list';
 }
 
 // Other GF-related things that are generated outside of the .gform_wrapper:

@@ -1,0 +1,18 @@
+// scss-lint:disable SelectorFormat PlaceholderInExtend QualifyingElement
+
+@mixin gf-sublabel() {
+  color: $brand-default-aw;
+  font-size: $font-size-xs;
+  font-weight: normal;
+  letter-spacing: $letter-spacing-base;
+  margin-top: .5rem;
+  text-transform: uppercase;
+}
+
+@mixin gf-advanced-field-wrappers() {
+  .ginput_container_name,
+  .ginput_container_address,
+  .clear-multi {
+    @content;
+  }
+}

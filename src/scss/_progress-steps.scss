@@ -11,5 +11,5 @@
 
 .gf_step_active {
   @extend .breadcrumb-item.active;
-  color: $gray-darker; // color change doesn't get extended for whatever reason
+  color: $gray-darker; // color change doesn't get extended, so force it here
 }

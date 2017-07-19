@@ -23,27 +23,3 @@
   margin-bottom: .5rem; // more than what Athena provides out of the box, but looks better
   margin-top: .5rem;
 }
-
-// Field groups with sublabels
-.ginput_container_name,
-.clear-multi {
-  @include make-row();
-
-  // Sublabels
-  label {
-    color: $brand-default-aw;
-    font-size: $font-size-xs;
-    letter-spacing: $letter-spacing-base;
-    margin-top: .5rem;
-    text-transform: uppercase;
-  }
-}
-
-.ginput_container_date > .clear-multi {
-  // We have to explicitly force this div's width because datepicker inputs
-  // are set to display:flex.  The selector we use for datepicker inputs is not
-  // unique (see _field-date.scss), causing inherited styles to conflict with
-  // the .row styles we apply to this div (date select inputs won't render at
-  // the correct width.)
-  width: calc(100% + #{$grid-gutter-width-base});
-}
