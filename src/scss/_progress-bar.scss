@@ -1,0 +1,31 @@
+// scss-lint:disable SelectorFormat PlaceholderInExtend QualifyingElement
+
+.gf_progressbar {
+  @extend .progress;
+  margin-bottom: 1.25rem;
+}
+
+.gf_progressbar_title {
+  font-size: $font-size-h6;
+  text-transform: uppercase;
+}
+
+.gf_progressbar_percentage {
+  @extend .progress-bar;
+}
+
+.percentbar_blue {
+  @extend .bg-complementary;
+}
+
+.percentbar_green {
+  @extend .bg-success;
+}
+
+.percentbar_orange {
+  @extend .bg-warning;
+}
+
+.percentbar_red {
+  @extend .bg-danger;
+}

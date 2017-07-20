@@ -1,0 +1,19 @@
+// scss-lint:disable SelectorFormat PlaceholderInExtend QualifyingElement
+
+// Prev/Next/Submit buttons
+.button {
+  @extend .btn;
+}
+
+.gform_previous_button {
+  @extend .btn-default;
+}
+
+.gform_next_button {
+  @extend .btn-primary;
+}
+
+// Submit buttons
+input[type="submit"] {
+  @extend .btn-complementary;
+}

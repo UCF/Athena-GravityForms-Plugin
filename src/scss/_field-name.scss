@@ -1,0 +1,40 @@
+// scss-lint:disable SelectorFormat PlaceholderInExtend QualifyingElement
+
+.name_first,
+.name_middle,
+.name_last,
+.name_prefix,
+.name_suffix {
+  // Gravityforms renders these as span's--we must set display:block here to
+  // make IE10 behave
+  display: block;
+}
+
+.name_first,
+.name_middle,
+.name_last {
+  @extend .col-12;
+  @extend .col-lg;
+}
+
+.name_prefix,
+.name_suffix {
+  @extend .col;
+  @extend .col-sm-6;
+  @extend .col-md-4;
+  @extend .col-lg-2;
+}
+
+// .gfield modifier for sublabels above inputs
+.field_sublabel_above {
+  .name_first,
+  .name_middle,
+  .name_last,
+  .name_prefix,
+  .name_suffix {
+    @include media-breakpoint-up(lg) {
+      align-self: flex-end;
+      flex-direction: column;
+    }
+  }
+}
