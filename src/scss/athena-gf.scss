@@ -8,8 +8,8 @@
 
 // We wrap almost everything in .gform_wrapper to:
 // a) Avoid overrides to Athena or other theme styles, and
-// b) help PurifyCSS retain our styles while allowing unneeded Athena styles
-//    to be stripped away
+// b) help the gulp css-main task retain our styles while allowing unneeded
+//    Athena styles to be stripped away
 
 // scss-lint:disable SelectorFormat
 .gform_wrapper {
