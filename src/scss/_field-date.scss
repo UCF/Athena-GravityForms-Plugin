@@ -1,0 +1,68 @@
+// scss-lint:disable SelectorFormat PlaceholderInExtend QualifyingElement ImportantRule
+
+// Day/month/year text and select fields
+.gfield_date_dropdown_month,
+.gfield_date_month,
+.gfield_date_dropdown_day,
+.gfield_date_day {
+  @extend .col;
+  @extend .col-sm-3;
+  @extend .col-lg-2;
+}
+
+.gfield_date_dropdown_year,
+.gfield_date_year {
+  @extend .col-12;
+  @extend .col-sm-6;
+  @extend .col-md-4;
+  @extend .col-lg-3;
+
+  @include media-breakpoint-down(xs) {
+    margin-top: .5rem;
+  }
+}
+
+// Wrapper for datepicker input
+.gfield > .ginput_container_date {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+// Datepicker input
+.datepicker {
+  width: 80% !important; // override .medium class
+
+  @include media-breakpoint-up(sm) {
+    width: 50% !important;
+  }
+
+  @include media-breakpoint-up(md) {
+    width: 35% !important;
+  }
+
+  @include media-breakpoint-up(lg) {
+    width: 25% !important;
+  }
+
+  @include media-breakpoint-up(xl) {
+    width: 20% !important;
+  }
+}
+
+// Datepicker icon trigger
+.ui-datepicker-trigger {
+  margin-left: 13px;
+}
+
+// .gfield modifier for sublabels above inputs (text inputs only)
+.field_sublabel_above {
+  .gfield_date_month,
+  .gfield_date_day,
+  .gfield_date_year {
+    @include media-breakpoint-up(sm) {
+      align-self: flex-end;
+      flex-direction: column;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+// scss-lint:disable SelectorFormat PlaceholderInExtend QualifyingElement
+
+input:not([type="button"]):not([type="submit"]):not([type="radio"]):not([type="checkbox"]):not([type="file"]),
+select,
+textarea {
+  @extend .form-control;
+
+  // Field sizing classes
+  &.medium {
+    @include media-breakpoint-up(md) {
+      width: 70%;
+    }
+
+    @include media-breakpoint-up(lg) {
+      width: 60%;
+    }
+  }
+
+  &.small {
+    @include media-breakpoint-up(md) {
+      width: 40%;
+    }
+
+    @include media-breakpoint-up(lg) {
+      width: 30%;
+    }
+  }
+}
+
+// Wrapper for generic input label + input
+.gfield {
+  @extend .form-group;
+}

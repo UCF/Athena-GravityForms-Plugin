@@ -39,7 +39,10 @@ if ( ! function_exists( 'athena_gf_init' ) ) {
 	function athena_gf_init() {
 		// If Gravity Forms is installed, update necessary settings.
 		if ( class_exists( 'GFForms' ) ) {
-			// TODO
+			// Disable CSS
+			update_option( 'rg_gforms_disable_css', 1 );
+			// Enable HTML5 fields
+			update_option( 'rg_gforms_enable_html5', 1 );
 		}
 	}
 	add_action( 'plugins_loaded', 'athena_gf_init' );

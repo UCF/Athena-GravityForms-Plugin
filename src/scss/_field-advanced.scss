@@ -1,0 +1,52 @@
+// scss-lint:disable SelectorFormat PlaceholderInExtend QualifyingElement
+
+// Field groups with sublabels
+@include gf-advanced-field-wrappers() {
+  @include make-row();
+
+  // Sublabels
+  label {
+    @include gf-sublabel();
+  }
+
+  // Input wrapper positioning classes
+  .ginput_full,
+  .ginput_left,
+  .ginput_right {
+    // Gravityforms renders these as span's--we must set display:block here to
+    // make IE10 behave
+    display: block;
+  }
+
+  .ginput_full {
+    @extend .col-12;
+  }
+
+  .ginput_left,
+  .ginput_right {
+    @extend .col-sm-6;
+  }
+}
+
+// .gfield modifier for sublabels above inputs
+.field_sublabel_above {
+  @include gf-advanced-field-wrappers() {
+    .ginput_left,
+    .ginput_right {
+      @include media-breakpoint-up(sm) {
+        // Aligns inputs to the bottom of each generated column
+        align-self: flex-end;
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+.ginput_container_date > .clear-multi {
+  // We have to explicitly force this div's width because datepicker inputs
+  // are set to display:flex.  The selector we use for datepicker inputs is not
+  // unique (see _field-date.scss), causing inherited styles to conflict with
+  // the .row styles we apply to this div (date select inputs won't render at
+  // the correct width.)
+  width: calc(100% + #{$grid-gutter-width-base});
+}

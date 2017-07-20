@@ -1,0 +1,15 @@
+// scss-lint:disable SelectorFormat PlaceholderInExtend QualifyingElement
+
+.gf_page_steps {
+  @extend .breadcrumb;
+  margin-bottom: 1.25rem;
+}
+
+.gf_step {
+  @extend .breadcrumb-item;
+}
+
+.gf_step_active {
+  @extend .breadcrumb-item.active;
+  color: $gray-darker; // color change doesn't get extended, so force it here
+}

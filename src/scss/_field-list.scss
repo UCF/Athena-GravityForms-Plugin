@@ -1,0 +1,21 @@
+// scss-lint:disable SelectorFormat PlaceholderInExtend QualifyingElement
+
+// Wrapper for list field groups
+.gfield_list_container {
+  th {
+    @include gf-sublabel();
+    margin: 0;
+    padding-bottom: .5rem;
+    padding-top: .5rem;
+  }
+}
+
+.gfield_list_cell {
+  padding-bottom: $grid-gutter-width-base / 6;
+  padding-right: $grid-gutter-width-base / 6;
+}
+
+// Table cell that surrounds add/remove icon buttons
+.gfield_list_icons {
+  padding-left: ($grid-gutter-width-base / 2) - ($grid-gutter-width-base / 6);
+}
