@@ -14,6 +14,11 @@ WordPress plugin that provides Athena Framework styling for Gravity Forms.
 
 This plugin provides plug-and-go styling for [Gravity Forms](http://www.gravityforms.com/) on sites that utilize the [Athena Framework](https://ucf.github.io/Athena-Framework/).
 
+Most form configurations should work out-of-the-box, but please note that the following are not yet supported:
+- Left and right-aligned labels
+- [CSS-ready classes](https://www.gravityhelp.com/documentation/article/css-ready-classes/)
+- Athena custom form inputs
+
 
 == Installation ==
 
