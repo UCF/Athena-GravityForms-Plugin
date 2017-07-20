@@ -2,6 +2,16 @@
 
 .name_first,
 .name_middle,
+.name_last,
+.name_prefix,
+.name_suffix {
+  // Gravityforms renders these as span's--we must set display:block here to
+  // make IE10 behave
+  display: block;
+}
+
+.name_first,
+.name_middle,
 .name_last {
   @extend .col-12;
   @extend .col-lg;

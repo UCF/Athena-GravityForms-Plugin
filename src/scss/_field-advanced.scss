@@ -10,6 +10,14 @@
   }
 
   // Input wrapper positioning classes
+  .ginput_full,
+  .ginput_left,
+  .ginput_right {
+    // Gravityforms renders these as span's--we must set display:block here to
+    // make IE10 behave
+    display: block;
+  }
+
   .ginput_full {
     @extend .col-12;
   }
