@@ -7,8 +7,8 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     cleanCSS = require('gulp-clean-css'),
     readme = require('gulp-readme-to-markdown'),
-    purifyCSS = require('purify-css'),
     tap = require('gulp-tap'),
+    css = require('css'),
     browserSync = require('browser-sync').create();
 
 var configDefault = {
@@ -41,22 +41,9 @@ gulp.task('css-main', function() {
     })
       .on('error', sass.logError))
     .pipe(tap(function(file) {
-      return purifyCSS('', file.contents.toString(), {
-        info: true,
-        whitelist: ['*gform*', '*ui-datepicker*']
-      }, function(output){
-        file.contents = new Buffer(output);
-      });
+      return filterAthenaCSS(file);
     }))
-    // TODO: re-enable cleanCSS
-    // TODO: try to filter out html, body selectors from Athena
-    // .pipe(cleanCSS({
-    //   level: {
-    //     1: {
-    //       specialComments: ''
-    //     }
-    //   }
-    // }))
+    .pipe(cleanCSS())
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
       cascade: false
@@ -65,6 +52,88 @@ gulp.task('css-main', function() {
     .pipe(gulp.dest(config.dist.cssPath))
     .pipe(browserSync.stream());
 });
+
+// Removes Athena-specific styles.  Leaves only selectors and media queries
+// with selectors that begin with '.gform_wrapper' or 'ui-datepicker'.
+//
+// NOTE: This function will strip out any at-rules besides @media--if custom
+// @import, @keyframe, etc rules ever need to be added to athena-gf.min.css,
+// this function will need to be updated!
+function filterAthenaCSS(file) {
+  var cssObj = css.parse(file.contents.toString());
+
+  if (cssObj) {
+    var rules = cssObj.stylesheet.rules,
+        filteredRules = [];
+
+    // Loop through every rule. Store valid rules in filteredRules.
+    for(var i=0; i<rules.length; i++) {
+      var rule = rules[i],
+          filteredSelectors = [];
+
+      if (rule.type === 'rule') {
+        // Check each selector in the rule for selectors we want to keep.
+        // If a selector in the rule's selector list matches, add it to
+        // filteredSelectors.
+        filteredSelectors = getFilteredSelectors(rule, filteredSelectors);
+
+        // Check the rule's filteredSelectors array; if it's not empty, add
+        // the rule to filteredRules.
+        if (filteredSelectors.length) {
+          rule.selectors = filteredSelectors;
+          filteredRules.push(rule);
+        }
+      }
+      else if (rule.type === 'media') {
+        var filteredSubnodes = [];
+
+        for (var k=0; k<rule.rules.length; k++) {
+          var subnode = rule.rules[k],
+              filteredSubnodeSelectors = [];
+
+          if (subnode.type === 'rule') {
+            // Check each selector in the rule for selectors we want to keep.
+            // If a selector in the rule's selector list matches, add it to
+            // filteredSubnodeSelectors.
+            filteredSubnodeSelectors = getFilteredSelectors(subnode, filteredSubnodeSelectors);
+
+            // Check the rule's filteredSubnodeSelectors array; if it's not empty, add
+            // the rule to filteredSubnodes.
+            if (filteredSubnodeSelectors.length) {
+              subnode.selectors = filteredSubnodeSelectors;
+              filteredSubnodes.push(subnode);
+            }
+          }
+        }
+
+        if (filteredSubnodes.length) {
+          rule.rules = filteredSubnodes;
+          filteredRules.push(rule);
+        }
+      }
+    }
+
+    // Finally, replace cssObj's old ruleset with our filtered one:
+    cssObj.stylesheet.rules = filteredRules;
+
+    // Return a buffer for gulp to continue with
+    file.contents = new Buffer(css.stringify(cssObj));
+  }
+  else {
+    console.log('Couldn\'t parse CSS--skipping');
+  }
+}
+
+// Returns an array of filtered selectors present in a given node.
+function getFilteredSelectors(node, filteredSelectors) {
+  for (var i=0; i<node.selectors.length; i++) {
+    var selector = node.selectors[i];
+    if (selector.startsWith('.gform_wrapper') || selector.startsWith('.ui-datepicker')) {
+      filteredSelectors.push(selector);
+    }
+  }
+  return filteredSelectors;
+}
 
 // All css-related tasks
 gulp.task('css', ['scss-lint', 'css-main']);
