@@ -29,6 +29,10 @@ Due to how Gravity Forms wraps advanced fields in containers with their sublabel
 
 ## Changelog ##
 
+### 1.0.1 ###
+Bug fixes:
+* Added styles to hide honeypot validation fields.
+
 ### 1.0.0 ###
 * Initial release
 

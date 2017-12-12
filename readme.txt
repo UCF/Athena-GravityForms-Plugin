@@ -3,7 +3,7 @@ Contributors: ucfwebcom
 Tags: ucf, athena-framework, gravityforms
 Requires at least: 4.7.3
 Tested up to: 4.7.3
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/copyleft/gpl-3.0.html
 
@@ -35,6 +35,10 @@ Due to how Gravity Forms wraps advanced fields in containers with their sublabel
 
 
 == Changelog ==
+
+= 1.0.1 =
+Bug fixes:
+* Added styles to hide honeypot validation fields.
 
 = 1.0.0 =
 * Initial release
