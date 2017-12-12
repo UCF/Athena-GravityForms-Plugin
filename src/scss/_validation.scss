@@ -29,3 +29,9 @@
     @extend .form-control-danger;
   }
 }
+
+
+// Honeypot validation field
+.gform_validation_container {
+  display: none;
+}
