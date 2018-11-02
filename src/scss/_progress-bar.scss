@@ -1,5 +1,9 @@
 // scss-lint:disable SelectorFormat PlaceholderInExtend QualifyingElement
 
+.gform_heading + .gf_progressbar_wrapper {
+  margin-top: 1.25rem;
+}
+
 .gf_progressbar {
   @extend .progress;
   margin-bottom: 1.25rem;
