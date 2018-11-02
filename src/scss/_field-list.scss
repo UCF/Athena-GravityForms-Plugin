@@ -21,6 +21,10 @@
 
 // Table cell that surrounds add/remove icon buttons
 .gfield_list_icons {
+  @include media-breakpoint-down(sm) {
+    padding-left: 10px;
+  }
+
   .add_list_item,
   .delete_list_item {
     display: inline-block;
