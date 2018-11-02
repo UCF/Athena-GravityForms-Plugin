@@ -21,16 +21,10 @@
 
 // Table cell that surrounds add/remove icon buttons
 .gfield_list_icons {
-  padding-left: ($grid-gutter-width-base / 2) - ($grid-gutter-width-base / 6);
-
-  .add_list_item {
-    margin: 0 5px 5px 5px;
-  }
-
   .add_list_item,
   .delete_list_item {
     display: inline-block;
-    margin: 0 5px 5px 5px;
+    margin: 0 5px 5px;
     width: 1.5rem;
 
     @include media-breakpoint-up(md) {
