@@ -29,6 +29,12 @@ Due to how Gravity Forms wraps advanced fields in containers with their sublabel
 
 ## Changelog ##
 
+### 1.0.2 ###
+Bug fixes:
+* Fixed sizing and positioning of list field add/delete buttons
+* Added margin above progress bars when the form title or description is displayed above it
+* Added character count text styles
+
 ### 1.0.1 ###
 Bug fixes:
 * Added styles to hide honeypot validation fields.
