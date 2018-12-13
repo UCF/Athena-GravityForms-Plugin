@@ -1,56 +1,93 @@
-var gulp = require('gulp'),
-    configLocal = require('./gulp-config.json'),
-    merge = require('merge'),
-    sass = require('gulp-sass'),
-    rename = require('gulp-rename'),
-    scsslint = require('gulp-scss-lint'),
-    autoprefixer = require('gulp-autoprefixer'),
-    cleanCSS = require('gulp-clean-css'),
-    readme = require('gulp-readme-to-markdown'),
-    tap = require('gulp-tap'),
-    css = require('css'),
-    browserSync = require('browser-sync').create();
+/* global Buffer */
 
-var configDefault = {
-    src: {
-      scssPath: './src/scss'
-    },
-    dist: {
-      cssPath: './static/css'
-    },
-    packagesPath: './node_modules'
+const fs           = require('fs');
+const gulp         = require('gulp');
+const merge        = require('merge');
+const sass         = require('gulp-sass');
+const rename       = require('gulp-rename');
+const sassLint     = require('gulp-sass-lint');
+const autoprefixer = require('gulp-autoprefixer');
+const cleanCSS     = require('gulp-clean-css');
+const readme       = require('gulp-readme-to-markdown');
+const tap          = require('gulp-tap');
+const css          = require('css');
+const browserSync  = require('browser-sync').create();
+
+let config = {
+  src: {
+    scssPath: './src/scss'
   },
-  config = merge(configDefault, configLocal);
+  dist: {
+    cssPath: './static/css'
+  },
+  packagesPath: './node_modules',
+  sync: false,
+  syncTarget: 'http://localhost/wordpress/'
+};
+
+/* eslint-disable no-sync */
+if (fs.existsSync('./gulp-config.json')) {
+  const overrides = JSON.parse(fs.readFileSync('./gulp-config.json'));
+  config = merge(config, overrides);
+}
+/* eslint-enable no-sync */
+
+
+//
+// Helper functions
+//
+
+// BrowserSync reload function
+function serverReload(done) {
+  if (config.sync) {
+    browserSync.reload();
+  }
+  done();
+}
+
+// BrowserSync serve function
+function serverServe(done) {
+  if (config.sync) {
+    browserSync.init({
+      proxy: {
+        target: config.syncTarget
+      }
+    });
+  }
+  done();
+}
 
 
 //
 // CSS
 //
 
-// Lint all scss files
-gulp.task('scss-lint', function() {
-  return gulp.src(config.src.scssPath + '/*.scss')
-    .pipe(scsslint());
+// Lint all SCSS files
+gulp.task('scss-lint', () => {
+  return gulp.src(`${config.src.scssPath}/*.scss`)
+    .pipe(sassLint())
+    .pipe(sassLint.failOnError());
 });
 
-// Compile + bless primary scss files
-gulp.task('css-main', function() {
-  return gulp.src(config.src.scssPath + '/athena-gf.scss')
+// Compile primary SCSS files
+gulp.task('css-main', () => {
+  return gulp.src(`${config.src.scssPath}/athena-gf.scss`)
     .pipe(sass({
       includePaths: [config.src.scssPath, config.packagesPath]
     })
       .on('error', sass.logError))
-    .pipe(tap(function(file) {
+    .pipe(tap((file) => {
       return filterAthenaCSS(file);
     }))
     .pipe(cleanCSS())
     .pipe(autoprefixer({
-      browsers: ['last 2 versions'],
+      // Supported browsers added in package.json ("browserslist")
       cascade: false
     }))
-    .pipe(rename('athena-gf.min.css'))
-    .pipe(gulp.dest(config.dist.cssPath))
-    .pipe(browserSync.stream());
+    .pipe(rename({
+      extname: '.min.css'
+    }))
+    .pipe(gulp.dest(config.dist.cssPath));
 });
 
 // Removes Athena-specific styles.  Leaves only selectors and media queries
@@ -60,16 +97,16 @@ gulp.task('css-main', function() {
 // @import, @keyframe, etc rules ever need to be added to athena-gf.min.css,
 // this function will need to be updated!
 function filterAthenaCSS(file) {
-  var cssObj = css.parse(file.contents.toString());
+  const cssObj = css.parse(file.contents.toString());
 
   if (cssObj) {
-    var rules = cssObj.stylesheet.rules,
-        filteredRules = [];
+    const rules = cssObj.stylesheet.rules;
+    const filteredRules = [];
 
     // Loop through every rule. Store valid rules in filteredRules.
-    for(var i=0; i<rules.length; i++) {
-      var rule = rules[i],
-          filteredSelectors = [];
+    for (let i = 0; i < rules.length; i++) {
+      const rule = rules[i];
+      let filteredSelectors = [];
 
       if (rule.type === 'rule') {
         // Check each selector in the rule for selectors we want to keep.
@@ -83,13 +120,12 @@ function filterAthenaCSS(file) {
           rule.selectors = filteredSelectors;
           filteredRules.push(rule);
         }
-      }
-      else if (rule.type === 'media') {
-        var filteredSubnodes = [];
+      } else if (rule.type === 'media') {
+        const filteredSubnodes = [];
 
-        for (var k=0; k<rule.rules.length; k++) {
-          var subnode = rule.rules[k],
-              filteredSubnodeSelectors = [];
+        for (let k = 0; k < rule.rules.length; k++) {
+          const subnode = rule.rules[k];
+          let filteredSubnodeSelectors = [];
 
           if (subnode.type === 'rule') {
             // Check each selector in the rule for selectors we want to keep.
@@ -117,17 +153,16 @@ function filterAthenaCSS(file) {
     cssObj.stylesheet.rules = filteredRules;
 
     // Return a buffer for gulp to continue with
-    file.contents = new Buffer(css.stringify(cssObj));
-  }
-  else {
-    console.log('Couldn\'t parse CSS--skipping');
+    file.contents = Buffer.from(css.stringify(cssObj));
+  } else {
+    console.log('Couldn\'t parse CSS--skipping'); // eslint-disable-line no-console
   }
 }
 
 // Returns an array of filtered selectors present in a given node.
 function getFilteredSelectors(node, filteredSelectors) {
-  for (var i=0; i<node.selectors.length; i++) {
-    var selector = node.selectors[i];
+  for (let i = 0; i < node.selectors.length; i++) {
+    const selector = node.selectors[i];
     if (selector.startsWith('.gform_wrapper') || selector.startsWith('.ui-datepicker')) {
       filteredSelectors.push(selector);
     }
@@ -136,38 +171,36 @@ function getFilteredSelectors(node, filteredSelectors) {
 }
 
 // All css-related tasks
-gulp.task('css', ['scss-lint', 'css-main']);
+gulp.task('css', gulp.series('scss-lint', 'css-main'));
 
 
 //
-// Readme
+// Documentation
 //
 
 // Create a Github-flavored markdown file from the plugin readme.txt
-gulp.task('readme', function() {
+gulp.task('readme', () => {
   return gulp.src(['readme.txt'])
     .pipe(readme({
       details: false,
-      screenshot_ext: [],
+      screenshot_ext: [] // eslint-disable-line camelcase
     }))
     .pipe(gulp.dest('.'));
 });
 
 
+//
 // Rerun tasks when files change
-gulp.task('watch', function() {
-  if (config.sync) {
-    browserSync.init({
-        proxy: {
-          target: config.target
-        }
-    });
-  }
+//
+gulp.task('watch', (done) => {
+  serverServe(done);
 
-  gulp.watch(config.src.scssPath + '/**/*.scss', ['css']);
-  gulp.watch('./**/*.php').on('change', browserSync.reload);
-  gulp.watch('readme.txt', ['readme']);
+  gulp.watch(`${config.src.scssPath}/**/*.scss`, gulp.series('css', serverReload));
+  gulp.watch('./**/*.php', gulp.series(serverReload));
 });
 
+
+//
 // Default task
-gulp.task('default', ['css', 'readme']);
+//
+gulp.task('default', gulp.series('css', 'readme'));
