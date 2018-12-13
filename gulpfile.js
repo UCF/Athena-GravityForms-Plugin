@@ -3,7 +3,7 @@ var gulp = require('gulp'),
     merge = require('merge'),
     sass = require('gulp-sass'),
     rename = require('gulp-rename'),
-    scsslint = require('gulp-scss-lint'),
+    sassLint = require('gulp-scss-lint'),
     autoprefixer = require('gulp-autoprefixer'),
     cleanCSS = require('gulp-clean-css'),
     readme = require('gulp-readme-to-markdown'),
@@ -30,7 +30,8 @@ var configDefault = {
 // Lint all scss files
 gulp.task('scss-lint', function() {
   return gulp.src(config.src.scssPath + '/*.scss')
-    .pipe(scsslint());
+    .pipe(sassLint())
+    .pipe(sassLint.failOnError());
 });
 
 // Compile + bless primary scss files
