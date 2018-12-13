@@ -5,7 +5,7 @@ const gulp         = require('gulp');
 const merge        = require('merge');
 const sass         = require('gulp-sass');
 const rename       = require('gulp-rename');
-const sassLint     = require('gulp-scss-lint');
+const sassLint     = require('gulp-sass-lint');
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS     = require('gulp-clean-css');
 const readme       = require('gulp-readme-to-markdown');
@@ -153,7 +153,7 @@ function filterAthenaCSS(file) {
     cssObj.stylesheet.rules = filteredRules;
 
     // Return a buffer for gulp to continue with
-    file.contents = new Buffer(css.stringify(cssObj));
+    file.contents = Buffer.from(css.stringify(cssObj));
   } else {
     console.log('Couldn\'t parse CSS--skipping'); // eslint-disable-line no-console
   }
@@ -171,7 +171,7 @@ function getFilteredSelectors(node, filteredSelectors) {
 }
 
 // All css-related tasks
-gulp.task('css', ['scss-lint', 'css-main']);
+gulp.task('css', gulp.series('scss-lint', 'css-main'));
 
 
 //
