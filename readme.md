@@ -29,6 +29,11 @@ Due to how Gravity Forms wraps advanced fields in containers with their sublabel
 
 ## Changelog ##
 
+### 1.0.3 ###
+Miscellaneous:
+* Upgraded node dependencies
+* Added linter configs, a CONTRIBUTING doc, and issue templates to the project
+
 ### 1.0.2 ###
 Bug fixes:
 * Fixed sizing and positioning of list field add/delete buttons
