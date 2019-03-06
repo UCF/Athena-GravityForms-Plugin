@@ -1,4 +1,4 @@
-// scss-lint:disable SelectorFormat PlaceholderInExtend QualifyingElement
+// sass-lint:disable class-name-format placeholder-in-extend no-qualifying-elements
 
 // Required field asterisk
 .gfield_required {
@@ -23,7 +23,7 @@
     @extend .form-control-feedback;
   }
 
-  input:not([type="button"]):not([type="submit"]):not([type="radio"]):not([type="checkbox"]):not([type="file"]),
+  input:not([type='button']):not([type='submit']):not([type='radio']):not([type='checkbox']):not([type='file']),
   select,
   textarea {
     @extend .form-control-danger;

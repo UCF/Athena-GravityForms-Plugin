@@ -1,7 +1,7 @@
-// scss-lint:disable SelectorFormat PlaceholderInExtend QualifyingElement
+// sass-lint:disable class-name-format placeholder-in-extend no-qualifying-elements
 
-input[type="checkbox"],
-input[type="radio"] {
+input[type='checkbox'],
+input[type='radio'] {
   @extend .form-check-input;
 }
 
@@ -20,7 +20,7 @@ input[type="radio"] {
 // We add the .form-check-label extend here instead of on the inner label
 // because Athena expects .form-check-label to wrap around the
 // checkbox/radio button.
-*[class^="gchoice"] {
+*[class^='gchoice'] {
   @extend .form-check-label;
 
   label {

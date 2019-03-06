@@ -1,4 +1,4 @@
-// scss-lint:disable SelectorFormat PlaceholderInExtend QualifyingElement
+// sass-lint:disable class-name-format placeholder-in-extend no-qualifying-elements
 
 // Prev/Next/Submit buttons
 .button {
@@ -14,6 +14,6 @@
 }
 
 // Submit buttons
-input[type="submit"] {
+input[type='submit'] {
   @extend .btn-complementary;
 }
