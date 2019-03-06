@@ -1,24 +1,24 @@
 {
   "private": true,
   "devDependencies": {
-    "@babel/cli": "^7.1.5",
-    "@babel/core": "^7.1.5",
-    "@babel/preset-env": "^7.1.5",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
     "babel-eslint": "^10.0.1",
     "babel-plugin-transform-es2015-modules-strip": "^0.1.1",
-    "browser-sync": "^2.10.0",
-    "css": "^2.2.1",
-    "eslint": "^5.9.0",
+    "browser-sync": "^2.26.3",
+    "css": "^2.2.4",
+    "eslint": "^5.15.1",
     "gulp": "~4.0.0",
     "gulp-autoprefixer": "^6.0.0",
     "gulp-clean-css": "^4.0.0",
-    "gulp-readme-to-markdown": "^0.2.0",
-    "gulp-rename": "^1.2.2",
+    "gulp-readme-to-markdown": "^0.2.1",
+    "gulp-rename": "^1.4.0",
     "gulp-sass": "~4.0.2",
     "gulp-sass-lint": "^1.4.0",
     "gulp-tap": "^1.0.1",
-    "merge": "^1.2.0",
-    "ucf-athena-framework": "^1.0.1"
+    "merge": "^1.2.1",
+    "ucf-athena-framework": "^1.0.4"
   },
   "browserslist": [
     "last 2 versions"
