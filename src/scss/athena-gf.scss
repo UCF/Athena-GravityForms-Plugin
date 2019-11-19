@@ -11,7 +11,7 @@
 // b) help the gulp css-main task retain our styles while allowing unneeded
 //    Athena styles to be stripped away
 
-// scss-lint:disable SelectorFormat
+// sass-lint:disable class-name-format
 .gform_wrapper {
   @import 'form';
 
