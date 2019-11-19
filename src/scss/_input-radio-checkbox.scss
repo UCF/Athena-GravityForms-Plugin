@@ -10,7 +10,7 @@ input[type='radio'] {
 .gfield_checkbox {
   @extend .form-check;
   @include list-unstyled();
-  align-items: start;
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
 }
