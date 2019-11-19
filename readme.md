@@ -12,6 +12,7 @@ This plugin provides plug-and-go styling for [Gravity Forms](http://www.gravityf
 Most form configurations should work out-of-the-box, but please note that the following are not yet supported:
 - Left and right-aligned labels
 - [CSS-ready classes](https://www.gravityhelp.com/documentation/article/css-ready-classes/)
+- "Enhanced user interface" fields
 - Athena custom form inputs
 
 Due to how Gravity Forms wraps advanced fields in containers with their sublabels, sublabels will only span the width of the field.  Long custom sublabels may wrap to a new line in unexpected ways.
@@ -28,6 +29,12 @@ Due to how Gravity Forms wraps advanced fields in containers with their sublabel
 
 
 ## Changelog ##
+
+### 1.0.4 ###
+Enhancements:
+* Upgraded packages, including the Athena Framework, to latest versions
+* Updated linter configs
+* Replaced old scss-lint rules with sass-lint rules; cleaned up linter issues
 
 ### 1.0.3 ###
 Miscellaneous:
