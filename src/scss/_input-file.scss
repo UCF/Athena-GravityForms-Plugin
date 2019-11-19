@@ -1,5 +1,5 @@
-// scss-lint:disable SelectorFormat PlaceholderInExtend QualifyingElement
+// sass-lint:disable class-name-format placeholder-in-extend no-qualifying-elements
 
-input[type="file"] {
+input[type='file'] {
   @extend .form-control-file;
 }
