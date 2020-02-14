@@ -30,6 +30,10 @@ Due to how Gravity Forms wraps advanced fields in containers with their sublabel
 
 ## Changelog ##
 
+### 1.0.5 ###
+Documentation:
+* Updated contributing doc to reflect the switch from slack to teams.
+
 ### 1.0.4 ###
 Enhancements:
 * Upgraded packages, including the Athena Framework, to latest versions
