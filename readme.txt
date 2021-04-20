@@ -4,7 +4,7 @@ Tags: ucf, athena-framework, gravityforms
 Requires at least: 4.7.3
 Tested up to: 5.3
 Stable tag: 1.0.5
-Requires PHP: 5.4
+Requires PHP: 5.6
 License: GPLv3 or later
 License URI: http://www.gnu.org/copyleft/gpl-3.0.html
 
@@ -37,6 +37,11 @@ Due to how Gravity Forms wraps advanced fields in containers with their sublabel
 
 
 == Changelog ==
+
+= 2.0.0 =
+Miscellaneous:
+* Upgraded node dependencies
+* Updated CSS to work with the new version of Gravity Forms 2.5.
 
 = 1.0.5 =
 Documentation:
