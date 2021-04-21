@@ -7,24 +7,55 @@
   }
 
   div.gfield_list_group {
-    display: flex;
+    @extend .row;
+    @extend .no-gutters;
+
+    .gfield_list_cell, .gfield_list_icons {
+      @extend .col;
+      padding-right: $grid-gutter-width-base / 6;
+      padding-left: 0;
+    }
+
+    .gfield_list_icons {
+      min-width: 175px;
+
+      @include media-breakpoint-up(md) {
+        min-width: 200px;
+      }
+    }
+  }
+
+  div.gfield_list_header {
+    @extend .row;
+    @extend .no-gutters;
+
+    .gfield_header_item {
+      @extend .col;
+      padding-right: $grid-gutter-width-base / 6;
+      padding-left: 0;
+    }
   }
 
   th, .gfield_header_item {
     @include gf-sublabel();
+
     margin: 0;
-    padding-bottom: .5rem;
-    padding-top: .5rem;
+    padding-bottom: $grid-gutter-width-base / 6;
+    padding-top: $grid-gutter-width-base / 6;
+  }
+
+  div.gfield_header_item:last-of-type {
+    min-width: 175px;
+
+    @include media-breakpoint-up(md) {
+      min-width: 200px;
+    }
   }
 }
 
 .gfield_list_cell {
   padding-bottom: $grid-gutter-width-base / 6;
   padding-right: $grid-gutter-width-base / 6;
-}
-
-div.gfield_list_cell {
-  display: inline-block;
 }
 
 // Table cell that surrounds add/remove icon buttons
