@@ -1,7 +1,14 @@
 // sass-lint:disable class-name-format placeholder-in-extend no-qualifying-elements
 
+.gform_submission_error {
+  @extend .alert;
+  @extend .alert-danger;
+  font-size: .875rem;
+  font-weight: normal;
+}
+
 // Required field asterisk
-.gfield_required {
+.gfield_required, .gform_required_legend {
   display: none;
 }
 

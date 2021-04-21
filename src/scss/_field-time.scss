@@ -23,6 +23,10 @@
   }
 }
 
+.hour_minute_colon {
+  display: none;
+}
+
 // .gfield modifier for sublabels above inputs (text inputs only)
 .field_sublabel_above {
   .gfield_time_hour,
