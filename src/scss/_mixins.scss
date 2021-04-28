@@ -12,6 +12,8 @@
 @mixin gf-advanced-field-wrappers() {
   .ginput_container_name,
   .ginput_container_address,
+  legend+.ginput_complex,
+  legend+.ginput_list_container,
   .clear-multi {
     @content;
   }

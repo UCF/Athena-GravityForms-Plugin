@@ -3,3 +3,10 @@
 input[type='file'] {
   @extend .form-control-file;
 }
+
+.gform_fileupload_rules {
+  color: $gray;
+  display: inline-block;
+  font-size: .875rem;
+  margin-top: .5rem;
+}

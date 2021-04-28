@@ -2,6 +2,7 @@
 
 .ui-datepicker {
   @extend .popover;
+  max-width:340px;
 
   &::before,
   &::after {
