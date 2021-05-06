@@ -6,11 +6,50 @@
     width: 100%;
   }
 
-  th {
+  div.gfield_list_group {
+    @extend .row;
+    @extend .no-gutters;
+
+    .gfield_list_cell, .gfield_list_icons {
+      @extend .col;
+      padding-right: $grid-gutter-width-base / 6;
+      padding-left: 0;
+    }
+
+    .gfield_list_icons {
+      min-width: 175px;
+
+      @include media-breakpoint-up(md) {
+        min-width: 200px;
+      }
+    }
+  }
+
+  div.gfield_list_header {
+    @extend .row;
+    @extend .no-gutters;
+
+    .gfield_header_item {
+      @extend .col;
+      padding-right: $grid-gutter-width-base / 6;
+      padding-left: 0;
+    }
+  }
+
+  th, .gfield_header_item {
     @include gf-sublabel();
+
     margin: 0;
-    padding-bottom: .5rem;
-    padding-top: .5rem;
+    padding-bottom: $grid-gutter-width-base / 6;
+    padding-top: $grid-gutter-width-base / 6;
+  }
+
+  div.gfield_header_item:last-of-type {
+    min-width: 175px;
+
+    @include media-breakpoint-up(md) {
+      min-width: 200px;
+    }
   }
 }
 
@@ -21,19 +60,24 @@
 
 // Table cell that surrounds add/remove icon buttons
 .gfield_list_icons {
+  white-space: nowrap;
+
   @include media-breakpoint-down(sm) {
     padding-left: 10px;
   }
 
   .add_list_item,
   .delete_list_item {
-    display: inline-block;
-    margin: 0 5px 5px;
-    width: 1.5rem;
+    @extend .btn;
+    @extend .btn-sm;
+    margin: .6rem 5px 5px;
+  }
 
-    @include media-breakpoint-up(md) {
-      display: block;
-      width: 1rem;
-    }
+  button.add_list_item {
+    @extend .btn-outline-success;
+  }
+
+  button.delete_list_item {
+    @extend .btn-outline-danger;
   }
 }

@@ -16,6 +16,10 @@
   @include list-unstyled();
 }
 
+.gfield_label {
+  font-size: .875rem;
+}
+
 // Field description text
 .gfield_description {
   @extend .form-text;

@@ -30,6 +30,11 @@ Due to how Gravity Forms wraps advanced fields in containers with their sublabel
 
 ## Changelog ##
 
+### 2.0.0 ###
+Miscellaneous:
+* Upgraded node dependencies
+* Updated CSS to work with the new version of Gravity Forms 2.5.
+
 ### 1.0.5 ###
 Documentation:
 * Updated contributing doc to reflect the switch from slack to teams.
