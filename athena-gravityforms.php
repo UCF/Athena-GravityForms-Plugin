@@ -2,7 +2,7 @@
 /*
 Plugin Name: Athena Gravity Forms
 Description: Provides Athena Framework styling for Gravity Forms.
-Version: 2.0.0
+Version: 2.0.2
 Author: UCF Web Communications
 License: GPL3
 */
