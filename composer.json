@@ -1,0 +1,8 @@
+{
+    "name": "ucf/athena-gravityforms-plugin",
+    "description": "WordPress plugin that provides Athena Framework styling for Gravity Forms.",
+    "type": "wordpress-plugin",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}

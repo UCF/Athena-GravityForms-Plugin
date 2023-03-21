@@ -30,6 +30,10 @@ Due to how Gravity Forms wraps advanced fields in containers with their sublabel
 
 ## Changelog ##
 
+### 2.0.1 ###
+Enhancements:
+* Added composer file.
+
 ### 2.0.0 ###
 Miscellaneous:
 * Upgraded node dependencies
