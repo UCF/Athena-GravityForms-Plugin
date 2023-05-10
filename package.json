@@ -6,7 +6,7 @@
     "@babel/preset-env": "^7.13.15",
     "babel-eslint": "^10.0.3",
     "babel-plugin-transform-es2015-modules-strip": "^0.1.2",
-    "browser-sync": "^2.26.14",
+    "browser-sync": "^2.27.10",
     "css": "^3.0.0",
     "eslint": "^7.24.0",
     "gulp": "~4.0.2",
